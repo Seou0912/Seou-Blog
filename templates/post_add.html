@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="navbar">
+      <span>New Content</span>
+    </div>
+    <div id="post-add">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+          <label> Title</label>
+          <input name="title" type="text" />
+        </div>
+        <div>
+          <label> Content</label>
+          <textarea name="content" cols="50" rows="10"></textarea>
+        </div>
+        <div>
+          <label>Thumbnail</label>
+          <input name="thumbnail" type="file" />
+        </div>
+        <button type="submit" class="btn btn-primary">POST</button>
+      </form>
+    </div>
+  </body>
+</html>

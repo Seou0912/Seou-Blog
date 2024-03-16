@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post list</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div id="navbar">
+      <span>Pylog</span>
+      <a href="/posts/add/" class="btn btn-primary"> New </a>
+    </div>
+    <div id="Post list">
+      <ul class="posts">
+        <!--for-in 태그로 순회하며각각의 글을 li(list Item)요소로 표시-->
+        {% for post in posts %}
+        <li class="post">
+          <div>
+            <a href="/posts/{{ post.id }}/">{{ post.title}}</a>
+          </div>
+          <p>{{ post.content }}</p>
+          <ul class="comments">
+            {% for comment in post.comments.all %}
+            <li class="comment">{{ comment.content }}</li>
+            {% empty %}
+            <li class="comment">No comments yet</li>
+            {% endfor %}
+          </ul>
+          {% if post.thumbnail %}
+          <img src="{{ post.thumbnail.url}}" alt="" />
+          {% else %}
+          <img src="" alt="" />
+          {% endif %} .
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
