@@ -1,0 +1,6 @@
+# 무시할 파일이나 폴더의 패턴을 여기에 추가
+.DS_Store
+node_modules/
+/temp
+*.log
+build/
